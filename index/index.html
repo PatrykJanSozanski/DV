@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Education in the OECD countries</title>
+    <link rel="stylesheet" href="../style/styles.css">
+    <script type="text/javascript" src="../d3/d3.js"></script>
+    <script type="text/javascript" src="../d3/d3-selection-multi.js"></script>
+    <script type="text/javascript" src="../d3/topojson.js"></script>
+</head>
+
+<body>
+<div id="header">
+    <h1>Education in the OECD Countries</h1>
+</div>
+
+<div id="map_div">
+    <div id="world_map">
+        <h3>OECD countries</h3>
+        <p>
+            The Organisation for Economic Co-operation and Development (OECD) is an intergovernmental economic
+            organisation, founded in 1961 to stimulate economic progress and world trade. It is a forum of countries
+            describing themselves as committed to democracy and the market economy, providing a platform to compare
+            policy experiences, seek answers to common problems, identify good practices and coordinate domestic and
+            international policies of its members.
+        </p>
+        <div class="selector_div">
+            <label for="country_selector"></label>
+            <select class="selector" id="country_selector">
+                <option selected value="AVG">Average</option>
+                <option value="AUL">Australia</option>
+                <option value="AUS">Austria</option>
+                <option value="BEL">Belgium</option>
+                <option value="CAN">Canada</option>
+                <option value="DEN">Denmark</option>
+                <option value="FIN">Finland</option>
+                <option value="FRA">France</option>
+                <option value="FRG">Germany</option>
+                <option value="GRE">Greece</option>
+                <option value="IRE">Ireland</option>
+                <option value="ITA">Italy</option>
+                <option value="JPN">Japan</option>
+                <option value="LUX">Luxembourg</option>
+                <option value="NET">Netherlands</option>
+                <option value="NZL">New Zealand</option>
+                <option value="NOR">Norway</option>
+                <option value="POR">Portugal</option>
+                <option value="SPA">Spain</option>
+                <option value="SWE">Sweden</option>
+                <option value="SWZ">Switzerland</option>
+                <option value="UKM">United Kingdom</option>
+                <option value="USA">United States</option>
+            </select>
+        </div>
+        <svg width="100%" id="map_container">
+            <g id="map"></g>
+            <g id="points"></g>
+        </svg>
+        <div id="map_legend">
+        </div>
+    </div>
+</div>
+
+<div id="exp_div">
+    <h3>Public expenditure on education</h3>
+    <p>
+        Total general (central, regional and local) government expenditure on education (current, capital, and transfers),
+        expressed as a percentage of GDP.
+    </p>
+    <h4 class="country_display" id="exp_display"></h4>
+    <svg width="100%" height="400" id="pe_chart">
+        <g id="xAxis1"></g>
+        <g id="yAxis1"></g>
+        <g id="pe_layers"></g>
+    </svg>
+    <div id="pe_legend">
+        <svg width="100%">
+        </svg>
+    </div>
+</div>
+
+<div id="ex_div">
+    <h3>Total expenditure on education</h3>
+    <p>
+        Total expenditure on education, as a percentage of GDP. The funding sources include: all levels of government
+        (central, regional, and local), private firms, households, and other entities and international sources.
+    </p>
+    <h4 class="country_display" id="ex_display"></h4>
+    <svg width="100%" height="400" id="te_chart">
+        <g id="xAxis2"></g>
+        <g id="yAxis2"></g>
+        <g id="te_layers"></g>
+    </svg>
+    <div id="te_legend">
+        <svg width="100%">
+        </svg>
+    </div>
+</div>
+
+<div id="avg_div">
+    <h3>Average years of education</h3>
+    <p>Average years of education attained in a given population aged 25 and over.</p>
+    <h4 class="country_display" id="avg_display"></h4>
+    <div class="selector_div">
+        <label for="avg_selector"></label>
+        <select class="selector" id="avg_selector">
+            <option selected value="both">Females and males</option>
+            <option value="females">Females</option>
+            <option value="males">Males</option>
+        </select>
+    </div>
+    <svg width="100%" height="400" id="aye_chart">
+        <g id="xAxis3"></g>
+        <g id="yAxis3"></g>
+        <g id="aye"></g>
+    </svg>
+</div>
+
+<div id="level_div">
+    <h3>Level of education</h3>
+    <p>
+        The percentage of a given population aged 25 and over with educational attainment at a particular level.
+        Attainment is defined as any education at a particular level — this includes both some and complete schooling at
+        the level. All of the levels capture the highest level of attainment, meaning that those counted in one level
+        are not counted in any other lower level.
+    </p>
+    <h4 class="country_display" id="level_display"></h4>
+    <div class="selector_div">
+        <label for="loe_selector"></label>
+        <select class="selector" id="loe_selector">
+            <option selected value="both">Females and males</option>
+            <option value="females">Females</option>
+            <option value="males">Males</option>
+        </select>
+    </div>
+    <svg width="100%" height="400" id="loe_chart">
+        <g id="xAxis4"></g>
+        <g id="yAxis4"></g>
+        <g id="loe_layers"></g>
+    </svg>
+    <div id="level_legend">
+        <svg width="100%">
+        </svg>
+    </div>
+</div>
+
+<div id="gini_div">
+    <h3>Educational GINI index</h3>
+    <p>
+        Education Gini index for population aged 25 and over. The Gini index is a number between 0 and 1, where 0
+        corresponds with perfect equality (where everyone has the same education) and 1 corresponds with perfect
+        inequality.
+    </p>
+    <div class="selector_div">
+    <h4 class="country_display" id="gini_display"></h4>
+</div>
+
+    <svg width="100%" height="400" id="gini_chart">
+        <g id="xAxis5"></g>
+        <g id="yAxis5"></g>
+        <g id="gini"></g>
+    </svg>
+</div>
+
+<div id="compare_div">
+    <h3>Compare</h3>
+    <p>
+        Compare all the countries side by side. Choose a topic and a period of comparison by selecting one variable from
+        the drop-down list and selecting a year from the slider.
+    </p>
+    <div class="selector_div">
+        <label for="var_selector"></label>
+        <select class="selector" id="var_selector">
+            <option selected value="edexp">Public expenditure on education</option>
+            <option value="edex">Total expenditure on education</option>
+            <option value="aveyrsed">Average years of education</option>
+            <option value="ednosch">Population with no schooling</option>
+            <option value="ed1">Population with any primary schooling</option>
+            <option value="ed2">Population with any secondary schooling</option>
+            <option value="ed3">Population with any tertiary schooling</option>
+            <option value="ginitot2599">Educational GINI index </option>
+        </select>
+        <span class="year_display" id="year_display"></span>
+        <h4 class="compare_display" id="compare_display"></h4>
+    </div>
+    <svg width="100%" height="400" id="gini_chart">
+        <g id="xAxis6"></g>
+        <g id="yAxis6"></g>
+        <g id="compare"></g>
+    </svg>
+    <div class="slider_div">
+        <label for="year_slider"></label>
+        <input type="range" class="slider" id="year_slider" list="tick_marks">
+        <datalist id="tick_marks"></datalist>
+    </div>
+</div>
+
+<div id="tooltip" class="hidden">
+    <p>
+        <span id="tooltip_field_1"></span>
+        <br>
+        <span id="tooltip_field_2"></span>
+    </p>
+</div>
+
+<script type="application/javascript" src="../index/script.js"></script>
+</body>
+</html>

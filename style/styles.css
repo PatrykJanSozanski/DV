@@ -1,0 +1,145 @@
+body {
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+
+    width: 70%;
+
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+p {
+    text-align: justify;
+}
+
+#header {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.selector_div {
+    width: 100%;
+    float: left;
+    margin-bottom: 2%;
+}
+
+.selector {
+    display: block;
+
+    font-size: 12px;
+    font-family: sans-serif;
+    font-weight: 700;
+    color: #444;
+
+    padding: 6px;
+
+    line-height: 1.3;
+    border: 1px solid #d0d0d0;
+    background-color: #f7f7f7;
+}
+
+#world_map, #exp_div, #ex_div, #avg_div, #level_div, #gini_div, #compare_div {
+    display: block;
+
+    margin: 2%;
+    padding: 20px;
+    border: 1px solid #d0d0d0;
+}
+
+.countries {
+    stroke: #f7f7f7;
+    stroke-width: 0.01%;
+    fill: #d9d9d9;
+}
+
+.highlightedCountry {
+    stroke: #f7f7f7;
+    stroke-width: 0.01%;
+    fill: #fbb117;
+}
+
+.OECDCountries {
+    stroke: #f7f7f7;
+    stroke-width: 0.01%;
+    fill: #00498d;
+}
+
+#tooltip {
+    font-size: 15px;
+    position: absolute;
+    width: auto;
+    height: auto;
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: white;
+    pointer-events: none;
+    border: 1px solid #d0d0d0;
+}
+
+#tooltip.hidden {
+    display: none;
+}
+
+.gini {
+    fill: none;
+    stroke-width: 4px;
+}
+
+#slider_div {
+    width: 100%;
+    float: right;
+}
+
+.country_display, .compare_display {
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.year_display {
+    font-size: 20px;
+    font-weight: bold;
+    float: right;
+}
+
+#avg_selector, #loe_selector {
+    float: right;
+}
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 20px;
+    background: #f7f7f7;
+    border: 1px solid #d0d0d0;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 21px;
+    height: 21px;
+    background: #00498d;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 21px;
+    height: 21px;
+    background: #00498d;
+    cursor: pointer;
+}
+
+circle {
+    display: none;
+}
